@@ -52,10 +52,6 @@ RUN npm set progress=false \
     && npm install
 ENV PATH ./node_modules/.bin:${PATH}
 
-# Install private requirements: this is useful for installing custom xblocks.
-COPY ./requirements/ /openedx/requirements
-RUN pip install -r /openedx/requirements/private.txt
-
 # Create folder that will store *.env.json and *.auth.json files, as well as
 # the tutor-specific settings files.
 RUN mkdir -p /openedx/config ./lms/envs/tutor ./cms/envs/tutor
@@ -81,6 +77,10 @@ RUN openedx-assets xmodule \
 COPY ./themes/ /openedx/themes/
 RUN openedx-assets themes \
     && openedx-assets collect --settings=tutor.assets
+
+# Install private requirements: this is useful for installing custom xblocks.
+COPY ./requirements/ /openedx/requirements
+RUN pip install -r /openedx/requirements/private.txt
 
 # service variant is "lms" or "cms"
 ENV SERVICE_VARIANT lms
