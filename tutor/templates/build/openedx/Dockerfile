@@ -6,7 +6,7 @@ MAINTAINER Régis Behmo <regis@behmo.com>
 # Install system requirements
 RUN apt update && \
     # Global requirements
-    apt install -y language-pack-en git python-virtualenv build-essential software-properties-common curl git-core libxml2-dev libxslt1-dev python-virtualenv libmysqlclient-dev python-apt python-dev libxmlsec1-dev libfreetype6-dev swig gcc g++ \
+    apt install -y nano language-pack-en git python-virtualenv build-essential software-properties-common curl git-core libxml2-dev libxslt1-dev python-virtualenv libmysqlclient-dev python-apt python-dev libxmlsec1-dev libfreetype6-dev swig gcc g++ \
     # openedx requirements
     gettext gfortran graphviz graphviz-dev libffi-dev libfreetype6-dev libgeos-dev libjpeg8-dev liblapack-dev libpng12-dev libsqlite3-dev libxml2-dev libxmlsec1-dev libxslt1-dev lynx nodejs npm ntp pkg-config \
     # Our requirements
@@ -52,6 +52,10 @@ RUN npm set progress=false \
     && npm install
 ENV PATH ./node_modules/.bin:${PATH}
 
+# Install private requirements: this is useful for installing custom xblocks.
+COPY ./requirements/ /openedx/requirements
+RUN pip install -r /openedx/requirements/private.txt
+
 # Create folder that will store *.env.json and *.auth.json files, as well as
 # the tutor-specific settings files.
 RUN mkdir -p /openedx/config ./lms/envs/tutor ./cms/envs/tutor
@@ -77,10 +81,6 @@ RUN openedx-assets xmodule \
 COPY ./themes/ /openedx/themes/
 RUN openedx-assets themes \
     && openedx-assets collect --settings=tutor.assets
-
-# Install private requirements: this is useful for installing custom xblocks.
-COPY ./requirements/ /openedx/requirements
-RUN pip install -r /openedx/requirements/private.txt
 
 # service variant is "lms" or "cms"
 ENV SERVICE_VARIANT lms
