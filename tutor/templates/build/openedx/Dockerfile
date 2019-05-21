@@ -31,7 +31,7 @@ WORKDIR /openedx/edx-platform
 
 # Apply patches
 # https://github.com/edx/edx-platform/pull/20325/
-RUN curl https://github.com/edx/edx-platform/commit/14fdc28daa00d07d9176c9dbd85b6a2d7ca3e473.patch | git apply -
+# RUN curl https://github.com/edx/edx-platform/commit/14fdc28daa00d07d9176c9dbd85b6a2d7ca3e473.patch | git apply -
 
 # Download extra locales to /openedx/locale
 # TODO upgrade this to ironwood
