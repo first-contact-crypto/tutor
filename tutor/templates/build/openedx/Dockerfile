@@ -48,7 +48,7 @@ RUN virtualenv /openedx/venv
 ENV PATH /openedx/venv/bin:${PATH}
 ENV VIRTUAL_ENV /openedx/venv/
 RUN pip install setuptools==39.0.1 pip==9.0.3
-RUN pip install -r --no-cache-dir requirements/edx/development.txt
+RUN pip install --no-cache-dir -r requirements/edx/development.txt
 
 # Install a recent version of nodejs
 RUN nodeenv /openedx/nodeenv --node=8.9.3 --prebuilt
