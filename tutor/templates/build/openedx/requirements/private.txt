@@ -9,3 +9,6 @@ git+https://github.com/openedxou/print-xblock.git
 git+https://github.com/Stanford-Online/xblock-in-video-quiz.git
 git+https://github.com/open-craft/problem-builder.git
 git+https://github.com/first-contact-crypto/badgr-xblock#egg=badgr-xblock
+git+https://github.com/eduNEXT/flow-control-xblock.git
+
+
