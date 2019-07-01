@@ -13,7 +13,7 @@ ANDROID_OAUTH2_SECRET: "{{ 24|random_string }}"
 ID: "{{ 24|random_string }}"
 
 # This must be defined early
-LMS_HOST: "www.myopenedx.com"
+LMS_HOST: "learn.firstcontactcrypto.com"
 
 # The following are default values
 ACTIVATE_LMS: true
@@ -28,14 +28,15 @@ ACTIVATE_NOTES: false
 ACTIVATE_RABBITMQ: true
 ACTIVATE_SMTP: true
 ACTIVATE_XQUEUE: false
-CMS_HOST: "studio.{{ LMS_HOST }}"
-CONTACT_EMAIL: "contact@{{ LMS_HOST }}"
+CMS_HOST: "studio.learn.firstcontactcrypto.com"
+CONTACT_EMAIL: "info@firstcontactcrypto.com"
 OPENEDX_AWS_ACCESS_KEY: ""
 OPENEDX_AWS_SECRET_ACCESS_KEY: ""
 ANDROID_RELEASE_STORE_PASSWORD: "android store password"
 ANDROID_RELEASE_KEY_PASSWORD: "android release key password"
 ANDROID_RELEASE_KEY_ALIAS: "android release key alias"
-DOCKER_IMAGE_OPENEDX: "overhangio/openedx:{{ TUTOR_VERSION }}"
+# DOCKER_IMAGE_OPENEDX: "overhangio/openedx:{{ TUTOR_VERSION }}"
+DOCKER_IMAGE_OPENEDX: "localhost:5000/openedx:ironwood.1"
 DOCKER_IMAGE_ANDROID: "overhangio/openedx-android:{{ TUTOR_VERSION }}"
 DOCKER_IMAGE_FORUM: "overhangio/openedx-forum:{{ TUTOR_VERSION }}"
 DOCKER_IMAGE_NOTES: "overhangio/openedx-notes:{{ TUTOR_VERSION }}"
