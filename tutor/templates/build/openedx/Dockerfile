@@ -43,7 +43,7 @@ RUN virtualenv /openedx/venv
 ENV PATH /openedx/venv/bin:${PATH}
 ENV VIRTUAL_ENV /openedx/venv/
 RUN pip install setuptools==39.0.1 pip==9.0.3
-RUN pip install -r requirements/edx/development.txt
+RUN pip install --no-cache-dir -r requirements/edx/development.txt
 
 # Install patched version of ora2
 RUN pip uninstall -y ora2 && \
