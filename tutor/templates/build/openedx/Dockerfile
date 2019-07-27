@@ -81,7 +81,11 @@ ENV PATH /openedx/bin:${PATH}
 # and requires a complex settings file. Instead, we decompose the commands
 # and run each one individually to collect the production static assets to
 # /openedx/staticfiles.
-COPY ./themes/ /openedx/themes/
+
+
+## Blocked.. created volume in docker-compose file
+# COPY ./themes/ /openedx/themes/
+##
 
 RUN openedx-assets xmodule \
     && openedx-assets npm \
