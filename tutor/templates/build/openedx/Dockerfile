@@ -48,7 +48,7 @@ RUN virtualenv /openedx/venv
 ENV PATH /openedx/venv/bin:${PATH}
 ENV VIRTUAL_ENV /openedx/venv/
 RUN pip install setuptools==39.0.1 pip==9.0.3
-RUN pip install --no-cache-dir -r requirements/edx/development.txt
+RUN pip install -r requirements/edx/development.txt
 
 # Install a recent version of nodejs
 RUN nodeenv /openedx/nodeenv --node=8.9.3 --prebuilt
@@ -81,11 +81,13 @@ ENV PATH /openedx/bin:${PATH}
 # and requires a complex settings file. Instead, we decompose the commands
 # and run each one individually to collect the production static assets to
 # /openedx/staticfiles.
+COPY ./themes/ /openedx/themes/
+
 RUN openedx-assets xmodule \
     && openedx-assets npm \
     && openedx-assets webpack --env=prod \
     && openedx-assets common
-COPY ./themes/ /openedx/themes/
+
 RUN openedx-assets themes \
     && openedx-assets collect --settings=tutor.assets
 
