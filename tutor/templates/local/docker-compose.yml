@@ -133,6 +133,7 @@ services:
       - ../apps/openedx/settings/cms/:/openedx/edx-platform/cms/envs/tutor/
       - ../apps/openedx/config/:/openedx/config/
       - ../../data/cms:/openedx/data
+      - ./openedx/themes/:/openedx/themes/
     depends_on:
       {% if ACTIVATE_ELASTICSEARCH %}- elasticsearch{% endif %}
       {% if ACTIVATE_MEMCACHED %}- memcached{% endif %}
@@ -158,6 +159,7 @@ services:
       - ../apps/openedx/settings/cms/:/openedx/edx-platform/cms/envs/tutor/
       - ../apps/openedx/config/:/openedx/config/
       - ../../data/lms:/openedx/data
+      - ./openedx/themes/:/openedx/themes/
     depends_on:
       {% if ACTIVATE_LMS %}- lms {% endif %}
   {% endif %}
@@ -176,6 +178,7 @@ services:
       - ../apps/openedx/settings/cms/:/openedx/edx-platform/cms/envs/tutor/
       - ../apps/openedx/config/:/openedx/config/
       - ../../data/cms:/openedx/data
+      - ./openedx/themes/:/openedx/themes/
     depends_on:
       {% if ACTIVATE_CMS %}- cms {% endif %}
   {% endif %}
@@ -193,6 +196,7 @@ services:
     volumes:
       - ../apps/notes/settings/tutor.py:/openedx/edx-notes-api/notesserver/settings/tutor.py
       - ../../data/notes:/openedx/data
+      - ./openedx/themes/:/openedx/themes/
     restart: unless-stopped
     depends_on:
       {% if ACTIVATE_MYSQL %}- mysql{% endif %}
@@ -205,6 +209,7 @@ services:
     volumes:
       - ../apps/xqueue/settings/tutor.py:/openedx/xqueue/xqueue/tutor.py
       - ../../data/xqueue:/openedx/data
+      - ./openedx/themes/:/openedx/themes/
     environment:
       DJANGO_SETTINGS_MODULE: xqueue.tutor
     restart: unless-stopped
@@ -216,6 +221,7 @@ services:
     volumes:
       - ../apps/xqueue/settings/tutor.py:/openedx/xqueue/xqueue/tutor.py
       - ../../data/xqueue:/openedx/data
+      - ./openedx/themes/:/openedx/themes/
     environment:
       DJANGO_SETTINGS_MODULE: xqueue.tutor
     restart: unless-stopped
