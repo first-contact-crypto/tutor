@@ -110,6 +110,7 @@ services:
       - ../apps/openedx/settings/cms/:/openedx/edx-platform/cms/envs/tutor/
       - ../apps/openedx/config/:/openedx/config/
       - ../../data/lms:/openedx/data
+      - ./openedx/themes:/openedx/themes
     depends_on:
       {% if ACTIVATE_ELASTICSEARCH %}- elasticsearch{% endif %}
       {% if ACTIVATE_FORUM %}- forum{% endif %}
