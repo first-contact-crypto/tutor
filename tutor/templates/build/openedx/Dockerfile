@@ -83,15 +83,11 @@ ENV PATH /openedx/bin:${PATH}
 # /openedx/staticfiles.
 
 
-## Blocked.. created volume in docker-compose file
-COPY ./themes/ /openedx/themes/
-##
-
 RUN openedx-assets xmodule \
     && openedx-assets npm \
     && openedx-assets webpack --env=prod \
     && openedx-assets common
-
+COPY ./themes/ /openedx/themes/
 RUN openedx-assets themes \
     && openedx-assets collect --settings=tutor.assets
 
