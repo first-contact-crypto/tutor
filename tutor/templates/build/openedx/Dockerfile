@@ -84,7 +84,7 @@ ENV PATH /openedx/bin:${PATH}
 
 
 ## Blocked.. created volume in docker-compose file
-# COPY ./themes/ /openedx/themes/
+COPY ./themes/ /openedx/themes/
 ##
 
 RUN openedx-assets xmodule \
