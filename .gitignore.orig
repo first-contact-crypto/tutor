@@ -10,3 +10,7 @@ __pycache__
 /build/
 /dist/
 /releases/
+<<<<<<< HEAD
+=======
+/tutor_openedx.egg-info/
+>>>>>>> 3.3.10

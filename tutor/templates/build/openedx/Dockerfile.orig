@@ -28,8 +28,13 @@ RUN mkdir -p /openedx/edx-platform && \
 WORKDIR /openedx/edx-platform
 
 # Apply patches
+<<<<<<< HEAD
 # Certificates XSS vulnerability https://github.com/edx/edx-platform/pull/20904
 RUN curl https://github.com/edx/edx-platform/commit/b33db2c548a1a530510d785f7659c78783a187fa.patch | git apply -
+=======
+# https://github.com/edx/edx-platform/pull/20325/
+# RUN curl https://github.com/edx/edx-platform/commit/14fdc28daa00d07d9176c9dbd85b6a2d7ca3e473.patch | git apply -
+>>>>>>> 3.3.10
 
 # Download extra locales to /openedx/locale
 # TODO upgrade this to ironwood
