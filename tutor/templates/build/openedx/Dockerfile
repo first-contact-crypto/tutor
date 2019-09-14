@@ -49,14 +49,6 @@ ENV VIRTUAL_ENV /openedx/venv/
 RUN pip install setuptools==39.0.1 pip==9.0.3
 RUN pip install -r requirements/edx/development.txt
 
-
-# By me install custom_form_app
-WORKDIR /openedx/data/uploads/custom-form-app 
-# RUN pip install -e ../data/uploads/custom-form-app
-RUN pip install -e .
-WORKDIR /openedx/edx-platform
-
-
 # Install patched version of ora2
 RUN pip uninstall -y ora2 && \
     pip install git+https://github.com/overhangio/edx-ora2.git@2.2.0-patched#egg=ora2==2.2.0
@@ -108,6 +100,12 @@ RUN openedx-assets themes \
 
 # Create a data directory, which might be used (or not)
 RUN mkdir /openedx/data
+
+# By me install custom_form_app
+WORKDIR /openedx/data/uploads/custom-form-app 
+# RUN pip install -e ../data/uploads/custom-form-app
+RUN pip install -e .
+WORKDIR /openedx/edx-platform
 
 # service variant is "lms" or "cms"
 ENV SERVICE_VARIANT lms
