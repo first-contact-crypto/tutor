@@ -49,8 +49,8 @@ ENV VIRTUAL_ENV /openedx/venv/
 RUN pip install setuptools==39.0.1 pip==9.0.3
 RUN pip install -r requirements/edx/development.txt
 
-# By me install custom_form_fields
-RUN pip install ../data/uploads/custom_form_app
+# By me install custom_form_app
+RUN pip install ../data/uploads/custom-form-app/
 
 # Install patched version of ora2
 RUN pip uninstall -y ora2 && \
@@ -64,7 +64,7 @@ RUN nodeenv /openedx/nodeenv --node=8.9.3 --prebuilt
 ENV PATH /openedx/nodeenv/bin:${PATH}
 
 # Install nodejs requirements
-RUN npm set progress=false \
+RUN npm set progress=false 
     && npm install
 ENV PATH ./node_modules/.bin:${PATH}
 
