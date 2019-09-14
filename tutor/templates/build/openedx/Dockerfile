@@ -51,10 +51,10 @@ RUN pip install -r requirements/edx/development.txt
 
 
 # By me install custom_form_app
-# WORKDIR /openedx/data/uploads/custom-form-app 
-RUN pip install -e ../data/uploads/custom-form-app
-# RUN pip install -e .
-# WORKDIR /openedx/edx-platform
+WORKDIR /openedx/data/uploads/custom-form-app 
+# RUN pip install -e ../data/uploads/custom-form-app
+RUN pip install -e .
+WORKDIR /openedx/edx-platform
 
 
 # Install patched version of ora2
