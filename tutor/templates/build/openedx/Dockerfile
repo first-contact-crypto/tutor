@@ -47,8 +47,10 @@ RUN virtualenv /openedx/venv
 ENV PATH /openedx/venv/bin:${PATH}
 ENV VIRTUAL_ENV /openedx/venv/
 RUN pip install setuptools==39.0.1 pip==9.0.3
-#RUN pip install -r requirements/edx/development.txt
 RUN pip install -r requirements/edx/development.txt
+
+# By me install custom_form_fields
+RUN pip install ../data/uploads/custom_form_app
 
 # Install patched version of ora2
 RUN pip uninstall -y ora2 && \
