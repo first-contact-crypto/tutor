@@ -101,11 +101,11 @@ RUN openedx-assets themes \
 # Create a data directory, which might be used (or not)
 RUN mkdir /openedx/data
 
-# By me install custom_form_app
-WORKDIR /openedx/data/uploads/custom-form-app 
-# RUN pip install -e ../data/uploads/custom-form-app
-RUN pip install -e .
-WORKDIR /openedx/edx-platform
+# # By me install custom_form_app
+# WORKDIR /openedx/data/uploads/custom-form-app 
+# # RUN pip install -e ../data/uploads/custom-form-app
+# RUN pip install -e .
+# WORKDIR /openedx/edx-platform
 
 # service variant is "lms" or "cms"
 ENV SERVICE_VARIANT lms
