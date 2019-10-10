@@ -2,6 +2,18 @@
 
 Note: Breaking changes between versions are indicated by "💥".
 
+## 3.7.2 (2019-10-09)
+
+- [Improvement] Properly set studio title (#246)
+- [Improvement] Enable Mysql strict mode
+
+## 3.7.1 (2019-10-06)
+
+- [Feature] Introduce tutor docker image
+- [Feature] Introduce `local hook` command for plugin development.
+- [Bugfix] Persist `private.txt` file between two runs of `config save`. (#247)
+- [Improvement] Added configuration values to limit the number of gunicorn workers for the LMS and CMS.
+
 ## 3.7.0 (2019-09-03)
 
 - 💥[Improvement] Get rid of mysql-client container

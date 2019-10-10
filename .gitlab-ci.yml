@@ -1,12 +1,22 @@
 stages:
+  - test
   - build
   - deploy:images
   - deploy:pypi
   - deploy:docs
 
+test:
+  script:
+    - apk add --no-cache make
+    - make ci-install-alpine-requirements
+    - python setup.py install
+    - make ci-install-python-requirements
+    - make test
+
 build:images:
   script:
-    - apk add --no-cache docker make
+    - apk add --no-cache make
+    - make ci-install-alpine-requirements
     - python setup.py install
     - make ci-build-images
   tags:
@@ -16,6 +26,7 @@ build:images:
 build:docs:
   script:
     - apk add --no-cache make
+    - make ci-install-alpine-requirements
     - pip install -r requirements/docs.txt
     - cd docs && make
   artifacts:
@@ -26,7 +37,8 @@ build:docs:
 build:pypi:
   script:
     - apk add --no-cache make
-    - make ci-install
+    - make ci-install-alpine-requirements
+    - make ci-install-python-requirements
     - make package
   artifacts:
     paths:
@@ -35,7 +47,8 @@ build:pypi:
 
 deploy:images:
   script:
-    - apk add --no-cache docker make
+    - apk add --no-cache make
+    - make ci-install-alpine-requirements
     - python setup.py install
     - make ci-push-images
   only:
@@ -47,7 +60,8 @@ deploy:images:
 deploy:pypi:
   script:
     - apk add --no-cache make
-    - make ci-install
+    - make ci-install-alpine-requirements
+    - make ci-install-python-requirements
     - make ci-pypi
   dependencies:
     - build:pypi
