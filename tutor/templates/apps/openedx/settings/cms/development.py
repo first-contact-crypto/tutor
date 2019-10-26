@@ -1,9 +1,9 @@
 import os
 from cms.envs.devstack import *
 
-
-# Execute the contents of common.py in this context
-execfile(os.path.join(os.path.dirname(__file__), "common.py"), globals())
+{% include "apps/openedx/settings/partials/common_cms.py" %}
 
 # Setup correct webpack configuration file for development
 WEBPACK_CONFIG_PATH = "webpack.dev.config.js"
+
+{{ patch("openedx-cms-development-settings") }}

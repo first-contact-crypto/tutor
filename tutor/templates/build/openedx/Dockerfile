@@ -33,13 +33,14 @@ WORKDIR /openedx/edx-platform
 # RUN curl https://github.com/edx/edx-platform/commit/b33db2c548a1a530510d785f7659c78783a187fa.patch | git apply -
 # CustomTagModule mako template injection https://groups.google.com/forum/#!topic/openedx-ops/aVHomKimstU
 RUN curl https://github.com/edx/edx-platform/commit/f9689aadb0f8a41570a4bb76654f980b4e31ad96.patch | git apply -
+# Allow SigV4 authentication for video uploads to S3 https://github.com/edx/edx-platform/pull/22080
+RUN curl https://github.com/overhangio/edx-platform/commit/0d4f6cc3433013960b28e963c4094ef2a2a92f04.patch | git apply -
 
 # Download extra locales to /openedx/locale
-# TODO upgrade this to ironwood
 RUN cd /tmp \
-    && curl -L -o openedx-i18n.tar.gz https://github.com/openedx/openedx-i18n/archive/hawthorn.tar.gz \
+    && curl -L -o openedx-i18n.tar.gz https://github.com/openedx/openedx-i18n/archive/ironwood.tar.gz \
     && tar xzf /tmp/openedx-i18n.tar.gz \
-    && mv openedx-i18n-hawthorn/edx-platform/locale/ /openedx/locale/ \
+    && mv openedx-i18n-ironwood/edx-platform/locale/ /openedx/locale/ \
     && rm -rf openedx-i18n*
 
 # Install python requirements in a virtualenv

@@ -1,3 +1,7 @@
+{% include "apps/openedx/settings/partials/common_all.py" %}
+
+######## Common CMS settings
+
 # Load module store settings from config files
 update_module_store_settings(MODULESTORE, doc_store_settings=DOC_STORE_CONFIG)
 
@@ -33,5 +37,6 @@ for folder in [LOG_DIR, MEDIA_ROOT, STATIC_ROOT_BASE]:
     if not os.path.exists(folder):
         os.makedirs(folder)
 
-{{ patch("openedx-common-settings") }}
 {{ patch("openedx-cms-common-settings") }}
+
+######## End of common CMS settings

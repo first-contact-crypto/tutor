@@ -1,5 +1,7 @@
-"""File with configurations for lms common between production and development.
-"""
+{% include "apps/openedx/settings/partials/common_all.py" %}
+
+######## Common LMS settings
+
 # Load module store settings from config files
 update_module_store_settings(MODULESTORE, doc_store_settings=DOC_STORE_CONFIG)
 
@@ -58,5 +60,6 @@ for folder in [LOG_DIR, MEDIA_ROOT, STATIC_ROOT_BASE, ORA2_FILEUPLOAD_ROOT]:
     if not os.path.exists(folder):
         os.makedirs(folder)
 
-{{ patch("openedx-common-settings") }}
 {{ patch("openedx-lms-common-settings") }}
+
+######## End of common LMS settings

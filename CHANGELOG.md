@@ -2,6 +2,17 @@
 
 Note: Breaking changes between versions are indicated by "💥".
 
+## 3.7.4 (2019-10-19)
+
+- [Bugfix] Fix missing requirements file in pypi package (#261)
+- [Improvement] Add missing cms/lms production/development setting patches
+- [Improvement] Allow SigV4 authentication for video upload to S3
+- [Bugfix] Fix cms development settings
+
+## 3.7.3 (2019-10-17)
+
+- [Improvement] Upgrade openedx locales to Ironwood
+
 ## 3.7.2 (2019-10-09)
 
 - [Improvement] Properly set studio title (#246)
